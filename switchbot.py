@@ -168,29 +168,5 @@ def main():
 
     sys.exit()
 
-from flask import Flask
-app = Flask(__name__)
-
-@app.route('/')
-def hello_world():
-    return 'Hello World!'
-
-    connect = pexpect.spawn('hciconfig')
-    pnum = connect.expect(["hci0",pexpect.EOF,pexpect.TIMEOUT])
-    if pnum!=0:
-        print 'No bluetooth hardware, exit now'
-        sys.exit()
-    connect = pexpect.spawn('hciconfig hci0 up')
-
-    scan = DevScanner()
-    dev_list = scan.scan_loop()
-
-    bluetooth_adr = dev_list[0]
-    trigger_device(bluetooth_adr)
-
-    connect = pexpect.spawn('hciconfig')
-
-    sys.exit()
-
-if __name__ == '__main__':
-    app.run()
+if __name__ == "__main__":
+    main()
