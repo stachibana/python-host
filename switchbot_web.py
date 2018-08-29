@@ -173,7 +173,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return 'Hello World!'
+    print 'triggered!'
 
     connect = pexpect.spawn('hciconfig')
     pnum = connect.expect(["hci0",pexpect.EOF,pexpect.TIMEOUT])
@@ -191,6 +191,8 @@ def hello_world():
     connect = pexpect.spawn('hciconfig')
 
     sys.exit()
+
+    return 'Hello World!'
 
 if __name__ == '__main__':
     app.run()
