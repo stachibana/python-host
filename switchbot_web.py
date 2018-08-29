@@ -181,7 +181,7 @@ def hello_world():
     pnum = connect.expect(["hci0",pexpect.EOF,pexpect.TIMEOUT])
     if pnum!=0:
         print 'No bluetooth hardware, exit now'
-        sys.exit()
+
     connect = pexpect.spawn('hciconfig hci0 up')
 
     scan = DevScanner()
@@ -193,8 +193,6 @@ def hello_world():
     trigger_device(bluetooth_adr)
 
     connect = pexpect.spawn('hciconfig')
-
-    sys.exit()
 
     return 'Hello World!'
 
