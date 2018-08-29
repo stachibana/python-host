@@ -80,7 +80,7 @@ class DevScanner(DefaultDelegate):
             if dev_type == 'L':
                 link_list.append(mac)
             #if dev_type == 'H'  or ord(dev_type) == ord('L') + 128:
-            if dev_type == 'H'
+            if dev_type == 'H':
                 #print int(binascii.b2a_hex(mode),16)
                 if int(binascii.b2a_hex(mode),16) > 127 :
                     bot_list.append([mac,"Turn On"])
