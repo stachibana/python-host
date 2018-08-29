@@ -60,6 +60,7 @@ class DevScanner(DefaultDelegate):
             for (adtype, desc, value) in dev.getScanData():
                 #print adtype,desc,value
                 if desc == '16b Service Data' :
+                    mac   = dev.addr
                     model = binascii.a2b_hex(value[4:6])
                     mode  = binascii.a2b_hex(value[6:8])
                 if desc == 'Local name' and value == "WoHand":
@@ -78,7 +79,8 @@ class DevScanner(DefaultDelegate):
             #print mac  ,dev_type
             if dev_type == 'L':
                 link_list.append(mac)
-            if dev_type == 'H'  or ord(dev_type) == ord('L') + 128:
+            #if dev_type == 'H'  or ord(dev_type) == ord('L') + 128:
+            if dev_type == 'H'
                 #print int(binascii.b2a_hex(mode),16)
                 if int(binascii.b2a_hex(mode),16) > 127 :
                     bot_list.append([mac,"Turn On"])
@@ -185,6 +187,8 @@ def hello_world():
     scan = DevScanner()
     dev_list = scan.scan_loop()
 
+    if len(dev_list) < 1:
+        return 'No device found'
     bluetooth_adr = dev_list[0]
     trigger_device(bluetooth_adr)
 
